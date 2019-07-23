@@ -11,7 +11,6 @@ enum CardType {
 struct Last {}
 
 typedef i64 Version
-typedef i64 ReferenceId
 typedef string Token
 
 /**
@@ -42,11 +41,11 @@ struct ResponseData {
 * card_type - тип карты
 */
 struct BinData {
-    1: required ReferenceId reference_id
-    2: required string payment_system
-    3: optional string bank_name
-    4: optional string iso_country_code
-    5: optional CardType card_type
+    1: required string payment_system
+    2: optional string bank_name
+    3: optional string iso_country_code
+    4: optional CardType card_type
+    5: required i64 bin_data_id
 }
 
 service Binbase {
@@ -70,9 +69,9 @@ service Binbase {
 
     /**
     * Получить данные по БИН
-    * reference_id - id, полученный в теле BinData при предыдущем запросе
+    * bin_data_id - id, полученный в теле BinData при предыдущем запросе
     * возращает данные БИН и версию
     * кидает BinNotFound, если данных о БИН нет
     */
-    ResponseData GetByReferenceId(1: ReferenceId reference_id) throws (1: BinNotFound not_found)
+    ResponseData GetByReferenceId(1: i64 bin_data_id) throws (1: BinNotFound not_found)
 }
