@@ -73,5 +73,5 @@ service Binbase {
     * возращает данные БИН и версию
     * кидает BinNotFound, если данных о БИН нет
     */
-    ResponseData GetByReferenceId(1: i64 bin_data_id) throws (1: BinNotFound not_found)
+    ResponseData GetByBinDataId(1: i64 bin_data_id) throws (1: BinNotFound not_found)
 }
