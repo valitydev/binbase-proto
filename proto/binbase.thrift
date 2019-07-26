@@ -12,6 +12,7 @@ struct Last {}
 
 typedef i64 Version
 typedef string Token
+typedef i64 BinDataId
 
 /**
 * Версия данных БИН
@@ -45,7 +46,7 @@ struct BinData {
     2: optional string bank_name
     3: optional string iso_country_code
     4: optional CardType card_type
-    5: required i64 bin_data_id
+    5: required BinDataId bin_data_id
 }
 
 service Binbase {
@@ -73,5 +74,5 @@ service Binbase {
     * возращает данные БИН и версию
     * кидает BinNotFound, если данных о БИН нет
     */
-    ResponseData GetByBinDataId(1: i64 bin_data_id) throws (1: BinNotFound not_found)
+    ResponseData GetByBinDataId(1: BinDataId bin_data_id) throws (1: BinNotFound not_found)
 }
