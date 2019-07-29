@@ -1,6 +1,8 @@
 namespace java com.rbkmoney.damsel.binbase
 namespace erlang binbase
 
+include "msgpack.thrift"
+
 enum CardType {
     charge_card
     credit
@@ -12,7 +14,7 @@ struct Last {}
 
 typedef i64 Version
 typedef string Token
-typedef i64 BinDataId
+typedef msgpack.Value BinDataId
 
 /**
 * Версия данных БИН
