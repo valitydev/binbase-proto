@@ -1,6 +1,8 @@
 namespace java com.rbkmoney.damsel.binbase
 namespace erlang binbase
 
+include "msgpack.thrift"
+
 enum CardType {
     charge_card
     credit
@@ -11,6 +13,8 @@ enum CardType {
 struct Last {}
 
 typedef i64 Version
+typedef string Token
+typedef msgpack.Value BinDataId
 
 /**
 * Версия данных БИН
@@ -44,6 +48,7 @@ struct BinData {
     2: optional string bank_name
     3: optional string iso_country_code
     4: optional CardType card_type
+    5: required BinDataId bin_data_id
 }
 
 service Binbase {
@@ -57,4 +62,19 @@ service Binbase {
     */
     ResponseData Lookup (1: string card_pan, 2: Reference reference) throws (1: BinNotFound not_found)
 
+    /**
+    * Получить данные по БИН
+    * card_token - токен CDS
+    * возращает данные БИН и версию
+    * кидает BinNotFound, если данных о БИН нет
+    */
+    ResponseData GetByCardToken(1: Token card_token) throws (1: BinNotFound not_found)
+
+    /**
+    * Получить данные по БИН
+    * bin_data_id - id, полученный в теле BinData при предыдущем запросе
+    * возращает данные БИН и версию
+    * кидает BinNotFound, если данных о БИН нет
+    */
+    ResponseData GetByBinDataId(1: BinDataId bin_data_id) throws (1: BinNotFound not_found)
 }
