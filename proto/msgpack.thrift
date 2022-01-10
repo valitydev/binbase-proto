@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.damsel.binbase.msgpack
+namespace java dev.vality.damsel.binbase.msgpack
 namespace erlang binbase
 
 /**
