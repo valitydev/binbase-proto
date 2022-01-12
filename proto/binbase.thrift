@@ -1,4 +1,4 @@
-namespace java com.rbkmoney.damsel.binbase
+namespace java dev.vality.damsel.binbase
 namespace erlang binbase
 
 include "msgpack.thrift"
