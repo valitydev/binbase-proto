@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install thrift
-        uses: valitydev/action-setup-thrift@v0.0.5
+        uses: valitydev/action-setup-thrift@v1.0.1
 
       - name: Setup BEAM
         uses: erlef/setup-beam@v1.10
