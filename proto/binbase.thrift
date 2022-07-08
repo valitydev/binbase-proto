@@ -1,7 +1,7 @@
 namespace java dev.vality.damsel.binbase
-namespace erlang binbase
+namespace erlang binbase.binbase
 
-include "msgpack.thrift"
+include "proto/msgpack.thrift"
 
 enum CardType {
     charge_card
